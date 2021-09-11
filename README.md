@@ -29,7 +29,7 @@ It finds the latest ```raspi``` ```linux-image``` and the closest to it RT patch
 For the local build:
 
 ```bash
-$ git clone https://github.com/ros-realtime/rt-kernel-docker-builder
+git clone https://github.com/ros-realtime/rt-kernel-docker-builder
 $ cd rt-kernel-docker-builder
 ```
 
