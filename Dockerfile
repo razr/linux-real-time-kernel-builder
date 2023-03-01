@@ -58,7 +58,7 @@ ARG KERNEL_DIR=linux-raspi
 
 # setup arch
 RUN apt-get update && apt-get install -q -y \
-    gcc-${triple} \
+    gcc-${triple} g++-${triple} \
     && dpkg --add-architecture ${ARCH} \
     && sed -i 's/deb h/deb [arch=amd64] h/g' /etc/apt/sources.list \
     && add-apt-repository -n -s "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -s -c) main universe restricted" \
