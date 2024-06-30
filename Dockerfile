@@ -36,7 +36,7 @@
 # copy deb packages to the host, or directly to the RPI4 target
 # $ scp ../*.deb <user>@172.17.0.1:/home/<user>/.
 
-FROM ubuntu:focal
+FROM ubuntu:noble
 
 USER root
 ARG DEBIAN_FRONTEND=noninteractive
@@ -51,8 +51,8 @@ ARG ARCH=arm64
 ARG UNAME_R
 ARG RT_PATCH
 ARG triple=aarch64-linux-gnu
-ARG KERNEL_VERSION=5.15.0
-ARG UBUNTU_VERSION=jammy
+ARG KERNEL_VERSION=6.8.0
+ARG UBUNTU_VERSION=noble
 ARG LTTNG_VERSION=2.13
 ARG KERNEL_DIR=linux-raspi
 
@@ -61,8 +61,11 @@ RUN apt-get update && apt-get install -q -y \
     gcc-${triple} \
     && dpkg --add-architecture ${ARCH} \
     && sed -i 's/deb h/deb [arch=amd64] h/g' /etc/apt/sources.list \
-    && add-apt-repository -n -s "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -s -c) main universe restricted" \
-    && add-apt-repository -n -s "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports $(lsb_release -s -c)-updates main universe restricted" \
+    && sed -i 's/deb h/deb [arch=amd64] h/g' /etc/apt/sources.list.d/* \
+    && sed -i '/Components/a\Architectures: amd64' /etc/apt/sources.list.d/*.sources \
+    && echo "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -s -c) main universe restricted" >> /etc/apt/sources.list.d/ubuntu-ports.list \
+    && echo "deb-src [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -s -c) main universe restricted" >> /etc/apt/sources.list.d/ubuntu-ports.list \
+    && echo "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports $(lsb_release -s -c)-updates main universe restricted" >> /etc/apt/sources.list.d/ubuntu-ports.list \
     && rm -rf /var/lib/apt/lists/*
 
 # setup environment
@@ -115,7 +118,7 @@ RUN cd /home/user \
 
 # install lttng dependencies
 RUN sudo apt-get update \
-    && sudo apt-get install -y libuuid1 libpopt0 liburcu6 libxml2 numactl
+    && sudo apt-get install -y libuuid1 libpopt0 libxml2 numactl
 
 COPY ./getpatch.sh /home/user/
 
