@@ -69,8 +69,10 @@ RUN apt-get update && apt-get install -q -y \
     && rm -rf /var/lib/apt/lists/*
 
 # setup environment
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV UID=1000
+ENV GID=1000
 
 # install build deps
 RUN apt-get update && apt-get build-dep -q -y linux \
@@ -79,9 +81,13 @@ RUN apt-get update && apt-get build-dep -q -y linux \
     fakeroot \
     && rm -rf /var/lib/apt/lists/*
 
+# remove ubuntu user to set our own
+RUN userdel -r ubuntu
+
 # setup user
 RUN apt-get update && apt-get install -q -y sudo \
-    && useradd -m -d /home/user -s /bin/bash user \
+    && groupadd -g $GID user \
+    && useradd -m -d /home/user -s /bin/bash -u $UID -g $GID user \
     && gpasswd -a user sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
     && echo 'user\nuser\n' | passwd user \
