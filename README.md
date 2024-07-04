@@ -1,10 +1,10 @@
-# Build ```RT_PREEMPT``` kernel for Raspberry Pi 4
+# Build ```RT_PREEMPT``` kernel for Raspberry Pi 4/5
 
-[![RPI4 RT Kernel build](https://github.com/ros-realtime/linux-real-time-kernel-builder/actions/workflows/rpi4-kernel-build.yml/badge.svg)](https://github.com/ros-realtime/linux-real-time-kernel-builder/actions/workflows/rpi4-kernel-build.yml)
+[![RPI RT Kernel build](https://github.com/ros-realtime/linux-real-time-kernel-builder/actions/workflows/rpi4-kernel-build.yml/badge.svg)](https://github.com/ros-realtime/linux-real-time-kernel-builder/actions/workflows/rpi4-kernel-build.yml)
 
 ## Introduction
 
-This README describes necessary steps to build and install ```RT_PREEMPT``` Linux kernel for the Raspberry Pi4 board. RT Kernel is a part of the ROS2 real-time system setup. Raspberry Pi4 is a reference board used by the ROS 2 real-time community for the development. RT Kernel is configured as described in [Kernel configuration section](#kernel-configuration). Kernel is built automatically by the Github action, and the artifacts are located under the [```build stable```](https://github.com/razr/linux-real-time-kernel-builder/actions/workflows/build-stable.yaml). Please follow [installation instructions](#deploy-new-kernel-on-raspberry-pi4) to deploy a new kernel to the RPI4 board.
+This README describes necessary steps to build and install ```RT_PREEMPT``` Linux kernel for the Raspberry Pi 4/5 board. RT Kernel is a part of the ROS2 real-time system setup. Raspberry Pi4 is a reference board used by the ROS 2 real-time community for the development. RT Kernel is configured as described in [Kernel configuration section](#kernel-configuration). Kernel is built automatically by the Github action, and the artifacts are located under the [```build stable```](https://github.com/razr/linux-real-time-kernel-builder/actions/workflows/build-stable.yaml). Please follow [installation instructions](#deploy-new-kernel-on-raspberry-pi4) to deploy a new kernel to the RPI4 board.
 
 ## Raspberry Pi 4 RT Linux kernel
 
