@@ -1,6 +1,6 @@
-# A Dockerfile to build an RT kernel for the RPI4 or RPI5 based on Ubuntu 24.04
+# A Dockerfile to build an RT kernel for the Raspberry Pi based on Ubuntu 24.04
 #
-# If run without parameters the Docker image is created to built RT_PREEMPT patched version of the latest 5.15 raspi kernel
+# If run without parameters the Docker image is created to built RT_PREEMPT patched version of the latest 6.8 raspi kernel
 # The Docker build command accepts the following build arguments:
 # $ docker build [--build-arg UBUNTU_VERSION=<ubuntu name>] [--build-arg KERNEL_VERSION=<kernel version>]
 #                [--build-arg UNAME_R=<raspi release>] [--build-arg RT_PATCH=<RT patch>]
@@ -33,7 +33,7 @@
 # -rw-r--r-- 1 user user  70457678 Jul  1 16:44 ../linux-image-6.8.4-rt11-raspi_6.8.4-g75867ff0890f-4_arm64.deb
 # -rw-r--r-- 1 user user   1377154 Jul  1 16:44 ../linux-libc-dev_6.8.4-g75867ff0890f-4_arm64.deb
 #
-# copy deb packages to the host, or directly to the RPI target
+# copy deb packages to the host, or directly to the Raspberry Pi target
 # $ scp ../*.deb <user>@172.17.0.1:/home/<user>/.
 
 FROM ubuntu:noble
