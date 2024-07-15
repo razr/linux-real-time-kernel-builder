@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This README describes necessary steps to build and install ```RT_PREEMPT``` Linux kernel for the Raspberry Pi board. RT Kernel is a part of the ROS2 real-time system setup. Raspberry Pi is a reference board used by the ROS 2 real-time community for the development. RT Kernel is configured as described in [Kernel configuration section](#kernel-configuration). Kernel is built automatically by the Github action, and the artifacts are located under the [```build stable```](https://github.com/razr/linux-real-time-kernel-builder/actions/workflows/build-stable.yaml). Please follow [installation instructions](#deploy-new-kernel-on-raspberry-pi) to deploy a new kernel to the RPI board.
+This README describes necessary steps to build and install ```RT_PREEMPT``` Linux kernel for the Raspberry Pi board. RT Kernel is a part of the ROS2 real-time system setup. Raspberry Pi is a reference board used by the ROS 2 real-time community for the development. RT Kernel is configured as described in [Kernel configuration section](#kernel-configuration). Kernel is built automatically by the Github action, and the artifacts are located under the [```build stable```](https://github.com/ros-realtime/linux-real-time-kernel-builder/actions/workflows/build-stable.yaml). Please follow [installation instructions](#deploy-new-kernel-on-raspberry-pi) to deploy a new kernel to the RPI board.
 
 ## Raspberry Pi RT Linux kernel
 
