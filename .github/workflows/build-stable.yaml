@@ -1,4 +1,5 @@
 name: 'Build stable'
+run-name: Build ${{ inputs.kernel_version }} ${{ inputs.uname_r }}
 
 on:
   workflow_dispatch:
